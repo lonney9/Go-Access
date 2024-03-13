@@ -23,7 +23,8 @@ logs_dir="/opt/goaccess/logs"
 reports_dir="/opt/goaccess/reports"
 
 # Copy down logs
-/usr/bin/rsync -avzP --include='access.log.*.*' --exclude='*' -e "ssh -i /path/to/ssh-key" user@web-host:logs/ $logs_dir
+# Exclude compressed logs (same name ends with .gz), include the access logs, exclude everything else not matching.
+/usr/bin/rsync -avzP --exclude='*.gz' --include='access.log.*.*' --exclude='*' -e "ssh -i /path/to/ssh-key" user@web-host:logs/ $logs_dir
 
 # Clear combined log file
 # https://unix.stackexchange.com/a/485652
