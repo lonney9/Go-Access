@@ -27,7 +27,7 @@ reports_dir="/opt/goaccess/reports"
 /usr/bin/rsync -avzP --exclude='*.gz' --include='access.log.*.*' --exclude='*' -e "ssh -i /path/to/ssh-key" user@web-host:logs/ $logs_dir
 
 # Clear combined log file
-# https://unix.stackexchange.com/questions/88808/most-efficient-method-to-empty-the-contents-of-a-file
+# https://unix.stackexchange.com/a/485652
 : > "$logs_dir/combined.access.log"
 
 # Combine last x logs into one file
